@@ -1,0 +1,56 @@
+id = "lx"
+name = "LX"
+version = "0.0.1"
+schema_version = 1
+authors = ["Hamza Kamal <kamal.hamza@outlook.com>"]
+description = "Language server integration for LX notes manager"
+repository = "https://github.com/kamal-hamza/lx-zed"
+
+[wasm]
+path = "extension.wasm"
+
+[language_servers.lx-ls]
+name = "lx-ls"
+language = "LaTeX"
+
+# --- Capabilities ---
+
+# 1. Detect Go toolchain
+[[capabilities]]
+kind = "process:exec"
+command = "go"
+args = ["version"]
+
+# 2. Detect path (Unix)
+[[capabilities]]
+kind = "process:exec"
+command = "which"
+args = ["go"]
+
+[[capabilities]]
+kind = "process:exec"
+command = "which"
+args = ["lx-lsp"]
+
+# 3. Detect path (Windows)
+[[capabilities]]
+kind = "process:exec"
+command = "where"
+args = ["go"]
+
+[[capabilities]]
+kind = "process:exec"
+command = "where"
+args = ["lx-lsp"]
+
+# 4. Install command
+[[capabilities]]
+kind = "process:exec"
+command = "go"
+args = ["install", "github.com/kamal-hamza/lx-lsp@latest"]
+
+# 5. Run the server
+[[capabilities]]
+kind = "process:exec"
+command = "lx-lsp"
+args = []
