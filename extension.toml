@@ -1,5 +1,5 @@
-id = "lx"
-name = "LX"
+id = "lx-lsp"
+name = "LX LSP"
 version = "0.0.1"
 schema_version = 1
 authors = ["Hamza Kamal <kamal.hamza@outlook.com>"]
@@ -54,3 +54,9 @@ args = ["install", "github.com/kamal-hamza/lx-lsp@latest"]
 kind = "process:exec"
 command = "lx-lsp"
 args = []
+
+# 6. Allow lx CLI rename command (for smart refactoring)
+[[capabilities]]
+kind = "process:exec"
+command = "lx"
+args = ["rename"]
